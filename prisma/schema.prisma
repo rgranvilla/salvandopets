@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,11 +7,263 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Species {
+  Dog
+  Cat
+  Other
+}
+
+enum GenderType {
+  Male
+  Female
+  NonBinary
+  Agender
+  GenderFluid
+  Bigender
+  QueerGender
+  Other
+}
+
+enum AddressType {
+  Home
+  Work
+  Billing
+  Shipping
+  Other
+}
+
+enum PhoneType {
+  Personal
+  Work
+  Contact
+  Emergency
+  Other
+}
+
 model User {
-  id       String  @id @default(uuid())
-  email    String  @unique
-  username String?
-  password String
+  id String @id @default(uuid())
+
+  email               String    @unique
+  username            String?   @unique
+  password            String
+  is_active           Boolean   @default(true)
+  deactivation_date   DateTime?
+  deactivation_reason String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  usersRoles      UsersRole[]
+  userAddresses   UsersAddress[]
+  userPhones      UsersPhone[]
+  userApplication UsersApplication[]
+  personalDetail  PersonalDetail?
+  companyDetail   CompanyDetail?
+  UserToken       UserToken[]
 
   @@map("users")
+}
+
+model UserToken {
+  id            String   @id @default(uuid())
+  token         String   @unique
+  refresh_token String   @unique
+  expires_date  DateTime
+  created_at    DateTime @default(now())
+
+  User    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  @@map("users-tokens")
+}
+
+model PersonalDetail {
+  id      String @id @default(uuid())
+  users   User   @relation(fields: [user_id], references: [id])
+  user_id String @unique
+
+  first_name String?
+  last_name  String?
+  birth_date DateTime?
+  gender     GenderType?
+
+  avatar String?
+  bio    String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("users_details")
+}
+
+model CompanyDetail {
+  id      String @id @default(uuid())
+  users   User   @relation(fields: [user_id], references: [id])
+  user_id String @unique
+
+  registration_number   String?  @unique
+  opening_date          String?
+  trade_name            String?
+  fantasy_name          String?
+  primary_activity      String?
+  primary_activity_desc String?
+  secondary_activities  String[]
+  legal_nature_code     String?
+  legal_nature_desc     String?
+  street                String?
+  number                String?
+  complement            String?
+  zip_code              String?
+  district              String?
+  city                  String?
+  state                 String?
+  email_address         String?
+  phone                 String?
+  capital_social        String?
+  partners              String[]
+  registration_status   String?
+  status_date           String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("companies_details")
+}
+
+model Role {
+  id String @id @default(uuid())
+
+  name        String
+  description String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  usersRoles      UsersRole[]
+  rolePermissions RolesPermission[]
+
+  @@map("roles")
+}
+
+model UsersRole {
+  id String @id @default(uuid())
+
+  users   User   @relation(fields: [user_id], references: [id])
+  user_id String
+  roles   Role   @relation(fields: [role_id], references: [id])
+  role_id String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("users_roles")
+}
+
+model Permission {
+  id String @id @default(uuid())
+
+  name String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  rolePermissions RolesPermission[]
+
+  @@map("permissions")
+}
+
+model RolesPermission {
+  id String @id @default(uuid())
+
+  role          Role       @relation(fields: [role_id], references: [id])
+  role_id       String
+  permissions   Permission @relation(fields: [permission_id], references: [id])
+  permission_id String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("roles_permissions")
+}
+
+model Address {
+  id String @id @default(uuid())
+
+  isMain      Boolean     @default(false)
+  type        AddressType
+  description String?
+  street      String
+  number      String
+  complement  String?
+  city        String
+  state       String
+  country     String
+  zip         String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  userAddresses UsersAddress[]
+
+  @@map("addresses")
+}
+
+model UsersAddress {
+  id String @id @default(uuid())
+
+  users      User    @relation(fields: [user_id], references: [id])
+  user_id    String
+  addresses  Address @relation(fields: [address_id], references: [id])
+  address_id String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("users_addresses")
+}
+
+model PhoneRegistry {
+  id String @id @default(uuid())
+
+  is_main     Boolean   @default(false)
+  is_whatsapp Boolean   @default(false)
+  is_telegram Boolean   @default(false)
+  is_verified Boolean   @default(false)
+  is_mobile   Boolean   @default(false)
+  type        PhoneType
+  number      String    @unique
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  usersPhones UsersPhone[]
+
+  @@map("phones_registries")
+}
+
+model UsersPhone {
+  id String @id @default(uuid())
+
+  users    User          @relation(fields: [user_id], references: [id])
+  user_id  String
+  phones   PhoneRegistry @relation(fields: [phone_id], references: [id])
+  phone_id String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("users_phones")
+}
+
+model UsersApplication {
+  id             String @id @default(uuid())
+  application_id String
+
+  users   User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("users_applications")
 }

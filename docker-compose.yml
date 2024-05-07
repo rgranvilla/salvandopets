@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  core_devtrails_api:
+  salvando_pets_api:
     image: bitnami/postgresql
-    container_name: core_devtrails_api
+    container_name: salvando_pets_api
     environment:
-      - POSTGRESQL_USERNAME=devtrailshub
-      - POSTGRESQL_PASSWORD=dev1002184
-      - POSTGRESQL_DATABASE=apidevtrailscore
+      - POSTGRESQL_USERNAME=salvandopets
+      - POSTGRESQL_PASSWORD=f3eac4b26cef1a9a3fd74711ef8ee08923fa7e161817301ee6644e4a010eed79
+      - POSTGRESQL_DATABASE=salvandopets
     ports:
       - '5432:5432'

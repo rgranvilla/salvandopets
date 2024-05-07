@@ -1,5 +1,11 @@
 # core_devtrails_api
 
+## 0.2.1
+
+### Patch Changes
+
+- Add users area
+
 ## 0.2.0
 
 ### Minor Changes
