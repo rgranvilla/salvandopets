@@ -1,5 +1,11 @@
 # core_devtrails_api
 
+## 0.2.3
+
+### Patch Changes
+
+- add security on controllers schemas
+
 ## 0.2.2
 
 ### Patch Changes
