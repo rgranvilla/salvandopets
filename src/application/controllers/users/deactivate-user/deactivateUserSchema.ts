@@ -2,6 +2,7 @@ export const deactivateUserSchema = {
   summary: 'Deactivate user',
   description: 'Deactivate a user',
   tags: ['Users'],
+  security: [{ bearerAuth: [] }],
   params: {
     type: 'object',
     properties: {

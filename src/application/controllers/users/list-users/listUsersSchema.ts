@@ -2,6 +2,7 @@ export const listUsersSchema = {
   summary: 'List all users',
   description: 'List all users',
   tags: ['Users'],
+  security: [{ bearerAuth: [] }],
   querystring: {
     type: 'object',
     properties: {

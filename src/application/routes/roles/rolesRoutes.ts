@@ -11,6 +11,7 @@ export async function rolesRoutes(app: FastifyInstance) {
   app.route({
     method: 'POST',
     url: '/create',
+    onRequest: [verifyJWT],
     handler: createRoleController,
     schema: CreateRoleSchema,
   });
@@ -18,6 +19,7 @@ export async function rolesRoutes(app: FastifyInstance) {
   app.route({
     method: 'PUT',
     url: '/:roleId/update',
+    onRequest: [verifyJWT],
     handler: updateRoleController,
     schema: UpdateRoleSchema,
   });

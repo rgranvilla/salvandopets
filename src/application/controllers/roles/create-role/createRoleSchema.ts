@@ -2,6 +2,7 @@ export const CreateRoleSchema = {
   summary: 'Create a new role',
   description: 'Create a new role',
   tags: ['Roles'],
+  security: [{ bearerAuth: [] }],
   body: {
     type: 'object',
     properties: {

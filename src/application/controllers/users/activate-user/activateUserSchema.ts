@@ -2,6 +2,7 @@ export const activateUserSchema = {
   summary: 'Activate user',
   description: 'Activate a user',
   tags: ['Users'],
+  security: [{ bearerAuth: [] }],
   params: {
     type: 'object',
     properties: {

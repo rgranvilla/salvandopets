@@ -11,6 +11,7 @@ import { listUsersSchema } from '@/application/controllers/users/list-users/list
 import { refreshTokenController } from '@/application/controllers/users/refresh-token/refreshTokenController';
 import { refreshTokenSchema } from '@/application/controllers/users/refresh-token/refreshTokenSchema';
 import { savePersonalDetailController } from '@/application/controllers/users/save-personal-detail/savePersonalDetailController';
+import { SavePersonalDetailSchema } from '@/application/controllers/users/save-personal-detail/savePersonalDetailSchema';
 import { updateUserController } from '@/application/controllers/users/update-user/updateUserController';
 import { UpdateUserSchema } from '@/application/controllers/users/update-user/updateUserSchema';
 import { verifyJWT } from '@/core/middlewares/verifyJWT';
@@ -35,6 +36,7 @@ export async function usersRoutes(app: FastifyInstance) {
   app.route({
     method: 'PUT',
     url: '/:userId/update',
+    onRequest: [verifyJWT],
     handler: updateUserController,
     schema: UpdateUserSchema,
   });
@@ -42,6 +44,7 @@ export async function usersRoutes(app: FastifyInstance) {
   app.route({
     method: 'PUT',
     url: '/:userId/activate',
+    onRequest: [verifyJWT],
     handler: activateUserController,
     schema: activateUserSchema,
   });
@@ -49,6 +52,7 @@ export async function usersRoutes(app: FastifyInstance) {
   app.route({
     method: 'PUT',
     url: '/:userId/deactivate',
+    onRequest: [verifyJWT],
     handler: deactivateUserController,
     schema: deactivateUserSchema,
   });
@@ -72,69 +76,6 @@ export async function usersRoutes(app: FastifyInstance) {
     url: '/save-personal-detail',
     onRequest: [verifyJWT],
     handler: savePersonalDetailController,
-    schema: {
-      summary: 'Save a personal detail',
-      description: 'Save a personal detail for an user',
-      tags: ['Users'],
-      body: {
-        type: 'object',
-        properties: {
-          userId: { type: 'string' },
-          firstName: { type: 'string' },
-          lastName: { type: 'string' },
-          birthDate: { type: 'string' },
-          gender: { type: 'string' },
-          avatar: { type: 'string' },
-          bio: { type: 'string' },
-        },
-        required: ['userId'],
-      },
-      response: {
-        201: {
-          description: 'Personal detail created successfully',
-          type: 'object',
-          properties: {
-            id: { type: 'string' },
-            userId: { type: 'string' },
-            firstName: { type: 'string' },
-            lastName: { type: 'string' },
-            birthDate: { type: 'string' },
-            gender: { type: 'string' },
-            avatar: { type: 'string' },
-            bio: { type: 'string' },
-            createdAt: { type: 'string' },
-            updatedAt: { type: 'string' },
-          },
-        },
-        400: {
-          description: 'Invalid input',
-          type: 'object',
-          properties: {
-            hasError: { type: 'boolean', example: true },
-            error: { type: 'string', example: 'Bad Request' },
-            message: { type: 'string', example: 'Validation error' },
-            issues: {
-              type: 'array',
-              items: {
-                type: 'object',
-                properties: {
-                  path: { type: 'string', example: 'firstName' },
-                  message: { type: 'string', example: 'Invalid password' },
-                },
-              },
-            },
-          },
-        },
-        500: {
-          description: 'Server error',
-          type: 'object',
-          properties: {
-            hasError: { type: 'boolean', example: true },
-            message: { type: 'string', example: 'Internal Server Error' },
-            error: { type: 'string', example: 'Internal Server Error' },
-          },
-        },
-      },
-    },
+    schema: SavePersonalDetailSchema,
   });
 }

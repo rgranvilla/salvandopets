@@ -4,6 +4,7 @@ export const UpdateRoleSchema = {
   summary: 'Update a role',
   description: 'Update a role',
   tags: ['Roles'],
+  security: [{ bearerAuth: [] }],
   body: {
     type: 'object',
     properties: {

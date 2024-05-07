@@ -4,6 +4,7 @@ export const UpdateUserSchema = {
   summary: 'Update an user',
   description: 'Update an user',
   tags: ['Users'],
+  security: [{ bearerAuth: [] }],
   body: {
     type: 'object',
     properties: {

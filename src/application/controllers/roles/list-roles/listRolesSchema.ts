@@ -2,6 +2,7 @@ export const listRolesSchema = {
   summary: 'List all roles',
   description: 'List all roles',
   tags: ['Roles'],
+  security: [{ bearerAuth: [] }],
   response: {
     200: {
       type: 'object',
