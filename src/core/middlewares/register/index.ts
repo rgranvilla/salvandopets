@@ -24,6 +24,14 @@ export function registerMiddlewares(app: FastifyInstance) {
         description: 'API for DevTrails users',
         version: packageJson.version,
       },
+      components: {
+        securitySchemes: {
+          bearerAuth: {
+            type: 'http',
+            scheme: 'bearer',
+          },
+        },
+      },
     },
   });
 
