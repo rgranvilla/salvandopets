@@ -3,16 +3,16 @@ import { IPaginetedResponse } from '@/core/@types/IPaginetedResponse';
 import { IUsersRepository } from '@/infra/repositories/users/IUsersRepository';
 import {
   IUserEntety,
-  UsersEnumDateRangeField,
-  UsersEnumSearchField,
-  UsersEnumSortBy,
+  UsersDateRangeFieldType,
+  UsersSearchFieldType,
+  UsersSortByType,
 } from '../../entities/user';
 
 interface IListUsersRequest
   extends IPaginatedParams<
-    UsersEnumSortBy,
-    UsersEnumSearchField,
-    UsersEnumDateRangeField
+    UsersSortByType,
+    UsersSearchFieldType,
+    UsersDateRangeFieldType
   > {
   searchQuery?: string;
 }
