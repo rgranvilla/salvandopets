@@ -2,7 +2,7 @@ export class RoleAlreadyInUseError extends Error {
   public error: string;
 
   constructor() {
-    super('This role already in use');
-    this.error = 'Role Not Available';
+    super('This role name already in use');
+    this.error = 'Role Name Not Available';
   }
 }

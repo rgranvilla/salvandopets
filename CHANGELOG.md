@@ -1,5 +1,12 @@
 # core_devtrails_api
 
+## 0.2.2
+
+### Patch Changes
+
+- add list roles
+- e154759: add role repository
+
 ## 0.2.1
 
 ### Patch Changes

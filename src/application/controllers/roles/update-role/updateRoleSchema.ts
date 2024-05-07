@@ -1,6 +1,8 @@
-export const CreateRoleSchema = {
-  summary: 'Create a new role',
-  description: 'Create a new role',
+import { FastifySchema } from 'fastify';
+
+export const UpdateRoleSchema = {
+  summary: 'Update a role',
+  description: 'Update a role',
   tags: ['Roles'],
   body: {
     type: 'object',
@@ -8,19 +10,21 @@ export const CreateRoleSchema = {
       name: { type: 'string' },
       description: { type: 'string' },
     },
-    required: ['name'],
+  },
+  params: {
+    type: 'object',
+    properties: {
+      roleId: { type: 'string', format: 'uuid' },
+    },
   },
   response: {
     201: {
-      description: 'Role created successfully',
+      description: 'User updated successfully',
       type: 'object',
       properties: {
         id: { type: 'string', example: '5f7e8d6e-5c6d-4a9b-9a8b-6b0e9e4b1c3d' },
-        name: { type: 'string', example: 'admin' },
-        description: {
-          type: 'string',
-          example: 'administrator role, can be manager system',
-        },
+        name: { type: 'string', example: 'name' },
+        description: { type: 'string', example: 'Can manager all system' },
         createdAt: { type: 'string', example: '2021-08-01T00:00:00.000Z' },
         updatedAt: { type: 'string', example: '2021-08-01T00:00:00.000Z' },
       },
@@ -44,8 +48,17 @@ export const CreateRoleSchema = {
         },
       },
     },
+    404: {
+      description: 'Role not found',
+      type: 'object',
+      properties: {
+        hasError: { type: 'boolean', example: true },
+        message: { type: 'string', example: 'Role not found' },
+        error: { type: 'string', example: 'Role Not Found' },
+      },
+    },
     409: {
-      description: 'Role already in use',
+      description: 'Role name already in use',
       type: 'object',
       properties: {
         hasError: { type: 'boolean', example: true },
@@ -63,4 +76,4 @@ export const CreateRoleSchema = {
       },
     },
   },
-};
+} as FastifySchema;

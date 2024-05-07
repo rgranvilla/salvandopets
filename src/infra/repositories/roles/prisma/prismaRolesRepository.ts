@@ -50,4 +50,12 @@ export class PrismaRolesRepository implements IRolesRepository {
 
     return RoleMapper.toDomain(foundedRole);
   }
+
+  async list(): Promise<Role[]> {
+    const roles = await prisma.role.findMany();
+
+    if (!roles) return new Array<Role>();
+
+    return roles.map((role) => RoleMapper.toDomain(role));
+  }
 }
