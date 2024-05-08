@@ -176,6 +176,11 @@ model RolesPermission {
   permissions   Permission @relation(fields: [permission_id], references: [id])
   permission_id String
 
+  can_create Boolean @default(false)
+  can_read   Boolean @default(false)
+  can_update Boolean @default(false)
+  can_delete Boolean @default(false)
+
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 

@@ -3,7 +3,7 @@ import { FastifySchema } from 'fastify';
 export const UpdatePermissionSchema = {
   summary: 'Update a permission',
   description: 'Update a permission by id',
-  tags: ['Permissions'],
+  tags: ['Roles & Permissions'],
   security: [{ bearerAuth: [] }],
   body: {
     type: 'object',

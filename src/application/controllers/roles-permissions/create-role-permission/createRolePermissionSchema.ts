@@ -1,31 +1,45 @@
-import { FastifySchema } from 'fastify';
-
-export const UpdateRoleSchema = {
-  summary: 'Update a role',
-  description: 'Update a role',
+export const CreateRolePermissionSchema = {
+  summary: 'Create a new role permission',
+  description: 'Create a new role permission',
   tags: ['Roles & Permissions'],
   security: [{ bearerAuth: [] }],
   body: {
     type: 'object',
     properties: {
-      name: { type: 'string' },
-      description: { type: 'string' },
+      roleId: { type: 'string' },
+      permissionId: { type: 'string' },
+      canCreate: { type: 'boolean' },
+      canRead: { type: 'boolean' },
+      canUpdate: { type: 'boolean' },
+      canDelete: { type: 'boolean' },
     },
-  },
-  params: {
-    type: 'object',
-    properties: {
-      roleId: { type: 'string', format: 'uuid' },
-    },
+    required: [
+      'roleId',
+      'permissionId',
+      'canCreate',
+      'canRead',
+      'canUpdate',
+      'canDelete',
+    ],
   },
   response: {
     201: {
-      description: 'User updated successfully',
+      description: 'Role permission created successfully',
       type: 'object',
       properties: {
         id: { type: 'string', example: '5f7e8d6e-5c6d-4a9b-9a8b-6b0e9e4b1c3d' },
-        name: { type: 'string', example: 'name' },
-        description: { type: 'string', example: 'Can manager all system' },
+        roleId: {
+          type: 'string',
+          example: '5f7e8d6e-5c6d-4a9b-9a8b-6b0e9e4b1c3d',
+        },
+        permissionId: {
+          type: 'string',
+          example: '5f7e8d6e-5c6d-4a9b-9a8b-6b0e9e4b1c3d',
+        },
+        canCreate: { type: 'boolean', example: true },
+        canRead: { type: 'boolean', example: true },
+        canUpdate: { type: 'boolean', example: true },
+        canDelete: { type: 'boolean', example: true },
         createdAt: { type: 'string', example: '2021-08-01T00:00:00.000Z' },
         updatedAt: { type: 'string', example: '2021-08-01T00:00:00.000Z' },
       },
@@ -49,22 +63,16 @@ export const UpdateRoleSchema = {
         },
       },
     },
-    404: {
-      description: 'Role not found',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Role not found' },
-        error: { type: 'string', example: 'Role Not Found' },
-      },
-    },
     409: {
-      description: 'Role name already in use',
+      description: 'Role permission already exists',
       type: 'object',
       properties: {
         hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'This role name already in use' },
-        error: { type: 'string', example: 'Role Name Not Available' },
+        message: {
+          type: 'string',
+          example: 'This role permission already exists',
+        },
+        error: { type: 'string', example: 'Role Permission Already Exists' },
       },
     },
     500: {
@@ -77,4 +85,4 @@ export const UpdateRoleSchema = {
       },
     },
   },
-} as FastifySchema;
+};

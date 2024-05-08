@@ -1,7 +1,7 @@
 export const CreatePermissionSchema = {
   summary: 'Create a new permission',
   description: 'Create a new permission',
-  tags: ['Permissions'],
+  tags: ['Roles & Permissions'],
   security: [{ bearerAuth: [] }],
   body: {
     type: 'object',

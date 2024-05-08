@@ -1,7 +1,7 @@
 export const listRolesSchema = {
   summary: 'List all roles',
   description: 'List all roles',
-  tags: ['Roles'],
+  tags: ['Roles & Permissions'],
   security: [{ bearerAuth: [] }],
   response: {
     200: {
