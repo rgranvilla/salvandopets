@@ -1,5 +1,11 @@
 # core_devtrails_api
 
+## 0.2.5
+
+### Patch Changes
+
+- ff2f99e: add roles permissions relation
+
 ## 0.2.4
 
 ### Patch Changes
