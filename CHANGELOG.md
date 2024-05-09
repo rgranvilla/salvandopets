@@ -1,5 +1,11 @@
 # salvandopets.com.br
 
+## 0.3.0
+
+### Minor Changes
+
+- separate repositories and refactor swagger documentation
+
 ## 0.2.5
 
 ### Patch Changes
