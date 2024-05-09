@@ -6,7 +6,7 @@ import { FastifyInstance } from 'fastify';
 export async function userDetailsRoutes(app: FastifyInstance) {
   app.route({
     method: 'POST',
-    url: '/:userId/save-personal-detail',
+    url: '/:userId/save-detail',
     onRequest: [verifyJWT],
     handler: saveUserDetailsController,
     schema: SaveUserDetailsSchema,
