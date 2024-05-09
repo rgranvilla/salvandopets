@@ -1,6 +1,19 @@
+import { sharedSchemas } from '../../sharedSchemas';
+import { userEntitiesSchemas, userRequestsSchemas } from '../userSchemas';
+
 export const deactivateUserSchema = {
   summary: 'Deactivate user',
-  description: 'Deactivate a user',
+  description: [
+    'This route allows the user to deactivate a user.',
+    '',
+    '-   Only authenticated users have the privilege to deactivate a user.',
+    '',
+    '-   The user id must be a valid UUID and must be sent as a path parameter',
+    '',
+    '-   The user must exist in the database.',
+    '',
+    '-   The response includes the deactivated user.',
+  ].join('\n'),
   tags: ['Users'],
   security: [{ bearerAuth: [] }],
   params: {
@@ -9,42 +22,13 @@ export const deactivateUserSchema = {
       userId: { type: 'string' },
     },
   },
-  body: {
-    type: 'object',
-    properties: {
-      deactivationReason: { type: 'string' },
-    },
-  },
+  body: userRequestsSchemas.DeactivateUser,
   response: {
     200: {
-      type: 'object',
-      properties: {
-        id: { type: 'string' },
-        username: { type: 'string' },
-        email: { type: 'string' },
-        isActive: { type: 'boolean' },
-        deactivationDate: { type: 'string' },
-        deactivationReason: { type: 'string' },
-        createdAt: { type: 'string' },
-        updatedAt: { type: 'string' },
-      },
+      description: 'Successful response',
+      ...userEntitiesSchemas.User,
     },
-    404: {
-      description: 'User not found',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'User not found' },
-        error: { type: 'string', example: 'User Not Found' },
-      },
-    },
-    500: {
-      type: 'object',
-      properties: {
-        statusCode: { type: 'number' },
-        error: { type: 'string' },
-        message: { type: 'string' },
-      },
-    },
+    404: sharedSchemas.Error_404,
+    500: sharedSchemas.Error_500,
   },
 };

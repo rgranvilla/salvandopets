@@ -1,6 +1,17 @@
+import { sharedSchemas } from '../../sharedSchemas';
+import { rolesPermissionsEntitiesSchemas } from '../rolesPermissionsSchemas';
+
+const description = [
+  'This route allows the user to list all roles.',
+  '',
+  '-   Only authenticated users have the privilege to list roles.',
+  '',
+  '-   The response includes a list of roles.',
+].join('\n');
+
 export const ListRolesPermissionsSchema = {
   summary: 'List all roles',
-  description: 'List all roles',
+  description,
   tags: ['Roles & Permissions'],
   security: [{ bearerAuth: [] }],
   response: {
@@ -9,20 +20,7 @@ export const ListRolesPermissionsSchema = {
       properties: {
         data: {
           type: 'array',
-          roles: {
-            type: 'object',
-            properties: {
-              id: { type: 'string' },
-              roleId: { type: 'string' },
-              permissionId: { type: 'string' },
-              canCreate: { type: 'boolean' },
-              canRead: { type: 'boolean' },
-              canUpdate: { type: 'boolean' },
-              canDelete: { type: 'boolean' },
-              createdAt: { type: 'string' },
-              updatedAt: { type: 'string' },
-            },
-          },
+          rolesPermissions: rolesPermissionsEntitiesSchemas.RolePermissions,
           example: [
             {
               id: '5f7e8d6e-5c6d-4a9b-9a8b-6b0e9e4b1c3d',
@@ -50,27 +48,7 @@ export const ListRolesPermissionsSchema = {
         },
       },
     },
-    401: {
-      description: 'Unauthorized',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Unauthorized' },
-        error: {
-          type: 'string',
-          example:
-            'You are not authorized to access this resource. Please login.',
-        },
-      },
-    },
-    500: {
-      description: 'Server error',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Internal Server Error' },
-        error: { type: 'string', example: 'Internal Server Error' },
-      },
-    },
+    401: sharedSchemas.Error_401,
+    500: sharedSchemas.Error_500,
   },
 };

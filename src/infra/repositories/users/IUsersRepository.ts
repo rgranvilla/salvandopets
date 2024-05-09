@@ -5,7 +5,7 @@ import {
   UsersSearchFieldType,
   UsersSortByType,
 } from '@/domain/users/entities/user';
-import { IListUsersResponse } from '@/domain/users/use-cases/list-usres/listUsersUseCase';
+import { IListUsersResponse } from '@/domain/users/use-cases/list-users/listUsersUseCase';
 
 export abstract class IUsersRepository {
   abstract create(user: User): Promise<User>;

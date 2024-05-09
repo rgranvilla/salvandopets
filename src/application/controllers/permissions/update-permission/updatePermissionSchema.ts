@@ -1,16 +1,28 @@
 import { FastifySchema } from 'fastify';
+import { sharedSchemas } from '../../sharedSchemas';
+import {
+  permissionsEntitiesSchemas,
+  permissionsRequestsSchemas,
+} from '../permissionsSchemas';
+
+const description = [
+  'This route allows the user to update a permission.',
+  '',
+  '-   Only authenticated users have the privilege to update a permission.',
+  '',
+  '-   The permission id must be a valid UUID and must be sent as a path parameter',
+  '',
+  '-   The permission must exist in the database.',
+  '',
+  '-   The response includes the updated permission.',
+].join('\n');
 
 export const UpdatePermissionSchema = {
   summary: 'Update a permission',
-  description: 'Update a permission by id',
+  description,
   tags: ['Roles & Permissions'],
   security: [{ bearerAuth: [] }],
-  body: {
-    type: 'object',
-    properties: {
-      name: { type: 'string' },
-    },
-  },
+  body: permissionsRequestsSchemas.UpdatePermission,
   params: {
     type: 'object',
     properties: {
@@ -20,62 +32,11 @@ export const UpdatePermissionSchema = {
   response: {
     201: {
       description: 'Permission updated successfully',
-      type: 'object',
-      properties: {
-        id: { type: 'string', example: '5f7e8d6e-5c6d-4a9b-9a8b-6b0e9e4b1c3d' },
-        name: { type: 'string', example: 'name' },
-        createdAt: { type: 'string', example: '2021-08-01T00:00:00.000Z' },
-        updatedAt: { type: 'string', example: '2021-08-01T00:00:00.000Z' },
-      },
+      ...permissionsEntitiesSchemas.Permission,
     },
-    400: {
-      description: 'Invalid input',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        error: { type: 'string', example: 'Bad Request' },
-        message: { type: 'string', example: 'Validation error' },
-        issues: {
-          type: 'array',
-          items: {
-            type: 'object',
-            properties: {
-              path: { type: 'string', example: 'name' },
-              message: { type: 'string', example: 'Invalid name' },
-            },
-          },
-        },
-      },
-    },
-    404: {
-      description: 'Permission not found',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Permission not found' },
-        error: { type: 'string', example: 'Permission Not Found' },
-      },
-    },
-    409: {
-      description: 'Permission name already in use',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: {
-          type: 'string',
-          example: 'This permission name already in use',
-        },
-        error: { type: 'string', example: 'Permission Name Not Available' },
-      },
-    },
-    500: {
-      description: 'Server error',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Internal Server Error' },
-        error: { type: 'string', example: 'Internal Server Error' },
-      },
-    },
+    400: sharedSchemas.Error_400,
+    404: sharedSchemas.Error_404,
+    409: sharedSchemas.Error_409,
+    500: sharedSchemas.Error_500,
   },
 } as FastifySchema;

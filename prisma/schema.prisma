@@ -21,8 +21,6 @@ enum GenderType {
 enum AddressType {
   Home
   Work
-  Billing
-  Shipping
   Other
 }
 
@@ -53,13 +51,13 @@ model User {
   userApplication UsersApplication[]
   personalDetail  PersonalDetail?
   companyDetail   CompanyDetail?
-  UserToken       UserToken[]
+  Token           Token[]
   Pets            Pets?
 
   @@map("users")
 }
 
-model UserToken {
+model Token {
   id            String   @id @default(uuid())
   token         String   @unique
   refresh_token String   @unique
@@ -190,16 +188,19 @@ model RolesPermission {
 model Address {
   id String @id @default(uuid())
 
-  isMain      Boolean     @default(false)
-  type        AddressType
-  description String?
-  street      String
-  number      String
-  complement  String?
-  city        String
-  state       String
-  country     String
-  zip         String
+  is_main      Boolean     @default(false)
+  is_billing   Boolean     @default(false)
+  is_shipping  Boolean     @default(false)
+  type         AddressType
+  description  String?
+  street       String
+  number       String
+  neighborhood String
+  complement   String?
+  city         String
+  state        String
+  country      String
+  postal_code  String
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -295,9 +296,9 @@ model Pets {
   size        Size
   description String?
 
-  whereItIsFound String?
-  whereItWasLost String?
-  whereItIs      String?
+  where_it_is_found String?
+  where_it_was_lost String?
+  where_it_is       String?
 
   city    String?
   state   String?

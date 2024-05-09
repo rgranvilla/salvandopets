@@ -1,33 +1,21 @@
+import { sharedSchemas } from '../../sharedSchemas';
+import { userEntitiesSchemas, userRequestsSchemas } from '../userSchemas';
+
 export const listUsersSchema = {
   summary: 'List all users',
-  description: 'List all users',
+  description: [
+    'This route allows the user to list all users.',
+    '',
+    '-   Only authenticated users have the privilege to list users.',
+    '',
+    '-   The response includes a list of users.',
+  ].join('\n'),
   tags: ['Users'],
   security: [{ bearerAuth: [] }],
-  querystring: {
-    type: 'object',
-    properties: {
-      page: { type: 'number' },
-      perPage: { type: 'number' },
-      sortBy: {
-        type: 'string',
-        enum: ['username', 'email', 'createdAt'],
-      },
-      sortOrder: {
-        type: 'string',
-        enum: ['asc', 'desc'],
-      },
-      searchField: {
-        type: 'string',
-        enum: ['username', 'email'],
-      },
-      searchQuery: { type: 'string' },
-      dateRangeField: { type: 'string' },
-      dateRangeStart: { type: 'string' },
-      dateRangeEnd: { type: 'string' },
-    },
-  },
+  querystring: userRequestsSchemas.ListUser,
   response: {
     200: {
+      description: 'Successful response',
       type: 'object',
       properties: {
         currentPage: { type: 'number', example: 1 },
@@ -35,17 +23,7 @@ export const listUsersSchema = {
         count: { type: 'number', example: 100 },
         data: {
           type: 'array',
-          users: {
-            type: 'object',
-            properties: {
-              id: { type: 'string' },
-              username: { type: 'string' },
-              email: { type: 'string' },
-              password: { type: 'string' },
-              createdAt: { type: 'string' },
-              updatedAt: { type: 'string' },
-            },
-          },
+          users: userEntitiesSchemas.User,
           example: [
             {
               id: 'e7d1b3c4-6f5a-4b0d-bf2c-8e9b6e2a1c7a',
@@ -67,27 +45,7 @@ export const listUsersSchema = {
         },
       },
     },
-    401: {
-      description: 'Unauthorized',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Unauthorized' },
-        error: {
-          type: 'string',
-          example:
-            'You are not authorized to access this resource. Please login.',
-        },
-      },
-    },
-    500: {
-      description: 'Server error',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Internal Server Error' },
-        error: { type: 'string', example: 'Internal Server Error' },
-      },
-    },
+    401: sharedSchemas.Error_401,
+    500: sharedSchemas.Error_500,
   },
 };

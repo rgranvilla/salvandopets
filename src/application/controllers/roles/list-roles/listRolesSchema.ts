@@ -1,6 +1,17 @@
+import { sharedSchemas } from '../../sharedSchemas';
+import { rolesEntitiesSchemas } from '../rolesSchemas';
+
+const description = [
+  'This route allows the user to list all roles.',
+  '',
+  '-   Only authenticated users have the privilege to list roles.',
+  '',
+  '-   The response includes a list of roles.',
+].join('\n');
+
 export const listRolesSchema = {
   summary: 'List all roles',
-  description: 'List all roles',
+  description,
   tags: ['Roles & Permissions'],
   security: [{ bearerAuth: [] }],
   response: {
@@ -9,16 +20,7 @@ export const listRolesSchema = {
       properties: {
         data: {
           type: 'array',
-          roles: {
-            type: 'object',
-            properties: {
-              id: { type: 'string' },
-              name: { type: 'string' },
-              description: { type: 'string' },
-              createdAt: { type: 'string' },
-              updatedAt: { type: 'string' },
-            },
-          },
+          roles: rolesEntitiesSchemas.Role,
           example: [
             {
               id: 'e7d1b3c4-6f5a-4b0d-bf2c-8e9b6e2a1c7a',
@@ -38,27 +40,7 @@ export const listRolesSchema = {
         },
       },
     },
-    401: {
-      description: 'Unauthorized',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Unauthorized' },
-        error: {
-          type: 'string',
-          example:
-            'You are not authorized to access this resource. Please login.',
-        },
-      },
-    },
-    500: {
-      description: 'Server error',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Internal Server Error' },
-        error: { type: 'string', example: 'Internal Server Error' },
-      },
-    },
+    401: sharedSchemas.Error_401,
+    500: sharedSchemas.Error_500,
   },
 };

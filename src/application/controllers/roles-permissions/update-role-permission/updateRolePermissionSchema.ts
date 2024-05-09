@@ -1,21 +1,28 @@
 import { FastifySchema } from 'fastify';
+import { sharedSchemas } from '../../sharedSchemas';
+import {
+  rolesPermissionsEntitiesSchemas,
+  rolesPermissionsRequestsSchemas,
+} from '../rolesPermissionsSchemas';
+
+const description = [
+  'This route allows the user to update a role permission.',
+  '',
+  '-   Only authenticated users have the privilege to update a role permission.',
+  '',
+  '-   The role permission id must be a valid UUID and must be sent as a path parameter',
+  '',
+  '-   The role permission must exist in the database.',
+  '',
+  '-   The response includes the updated role permission.',
+].join('\n');
 
 export const UpdateRolePermissionSchema = {
   summary: 'Update a role permission',
-  description: 'Update a role permission by\n\n rolePermissionId',
+  description,
   tags: ['Roles & Permissions'],
   security: [{ bearerAuth: [] }],
-  body: {
-    type: 'object',
-    properties: {
-      roleId: { type: 'string' },
-      permissionId: { type: 'string' },
-      canCreate: { type: 'boolean' },
-      canRead: { type: 'boolean' },
-      canUpdate: { type: 'boolean' },
-      canDelete: { type: 'boolean' },
-    },
-  },
+  body: rolesPermissionsRequestsSchemas.UpdateRolePermission,
   params: {
     type: 'object',
     properties: {
@@ -25,61 +32,10 @@ export const UpdateRolePermissionSchema = {
   response: {
     201: {
       description: 'Role Permission updated successfully',
-      type: 'object',
-      properties: {
-        id: { type: 'string', example: '5f7e8d6e-5c6d-4a9b-9a8b-6b0e9e4b1c3d' },
-        roleId: {
-          type: 'string',
-          example: '5f7e8d6e-5c6d-4a9b-9a8b-6b0e9e4b1c3d',
-        },
-        permissionId: {
-          type: 'string',
-          example: '5f7e8d6e-5c6d-4a9b-9a8b-6b0e9e4b1c3d',
-        },
-        canCreate: { type: 'boolean', example: true },
-        canRead: { type: 'boolean', example: true },
-        canUpdate: { type: 'boolean', example: true },
-        canDelete: { type: 'boolean', example: true },
-        createdAt: { type: 'string', example: '2021-08-01T00:00:00.000Z' },
-        updatedAt: { type: 'string', example: '2021-08-01T00:00:00.000Z' },
-      },
+      ...rolesPermissionsEntitiesSchemas.RolePermissions,
     },
-    400: {
-      description: 'Invalid input',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        error: { type: 'string', example: 'Bad Request' },
-        message: { type: 'string', example: 'Validation error' },
-        issues: {
-          type: 'array',
-          items: {
-            type: 'object',
-            properties: {
-              path: { type: 'string', example: 'name' },
-              message: { type: 'string', example: 'Invalid name' },
-            },
-          },
-        },
-      },
-    },
-    404: {
-      description: 'Role permission not found',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Role permission not found' },
-        error: { type: 'string', example: 'Role Permission Not Found' },
-      },
-    },
-    500: {
-      description: 'Server error',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Internal Server Error' },
-        error: { type: 'string', example: 'Internal Server Error' },
-      },
-    },
+    400: sharedSchemas.Error_400,
+    404: sharedSchemas.Error_404,
+    500: sharedSchemas.Error_500,
   },
 } as FastifySchema;

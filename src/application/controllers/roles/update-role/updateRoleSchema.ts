@@ -1,17 +1,25 @@
 import { FastifySchema } from 'fastify';
+import { sharedSchemas } from '../../sharedSchemas';
+import { rolesEntitiesSchemas, rolesRequestsSchemas } from '../rolesSchemas';
+
+const description = [
+  'This route allows the user to update a role.',
+  '',
+  '-   Only authenticated users have the privilege to update a role.',
+  '',
+  '-   The role id must be a valid UUID and must be sent as a path parameter',
+  '',
+  '-   The role must exist in the database.',
+  '',
+  '-   The response includes the updated role.',
+].join('\n');
 
 export const UpdateRoleSchema = {
   summary: 'Update a role',
-  description: 'Update a role',
+  description,
   tags: ['Roles & Permissions'],
   security: [{ bearerAuth: [] }],
-  body: {
-    type: 'object',
-    properties: {
-      name: { type: 'string' },
-      description: { type: 'string' },
-    },
-  },
+  body: rolesRequestsSchemas.UpdateRole,
   params: {
     type: 'object',
     properties: {
@@ -20,61 +28,12 @@ export const UpdateRoleSchema = {
   },
   response: {
     201: {
-      description: 'User updated successfully',
-      type: 'object',
-      properties: {
-        id: { type: 'string', example: '5f7e8d6e-5c6d-4a9b-9a8b-6b0e9e4b1c3d' },
-        name: { type: 'string', example: 'name' },
-        description: { type: 'string', example: 'Can manager all system' },
-        createdAt: { type: 'string', example: '2021-08-01T00:00:00.000Z' },
-        updatedAt: { type: 'string', example: '2021-08-01T00:00:00.000Z' },
-      },
+      description: 'Role updated successfully',
+      ...rolesEntitiesSchemas.Role,
     },
-    400: {
-      description: 'Invalid input',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        error: { type: 'string', example: 'Bad Request' },
-        message: { type: 'string', example: 'Validation error' },
-        issues: {
-          type: 'array',
-          items: {
-            type: 'object',
-            properties: {
-              path: { type: 'string', example: 'name' },
-              message: { type: 'string', example: 'Invalid name' },
-            },
-          },
-        },
-      },
-    },
-    404: {
-      description: 'Role not found',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Role not found' },
-        error: { type: 'string', example: 'Role Not Found' },
-      },
-    },
-    409: {
-      description: 'Role name already in use',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'This role name already in use' },
-        error: { type: 'string', example: 'Role Name Not Available' },
-      },
-    },
-    500: {
-      description: 'Server error',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'Internal Server Error' },
-        error: { type: 'string', example: 'Internal Server Error' },
-      },
-    },
+    400: sharedSchemas.Error_400,
+    404: sharedSchemas.Error_404,
+    409: sharedSchemas.Error_409,
+    500: sharedSchemas.Error_500,
   },
 } as FastifySchema;

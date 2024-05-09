@@ -1,6 +1,19 @@
+import { sharedSchemas } from '../../sharedSchemas';
+import { userEntitiesSchemas } from '../userSchemas';
+
 export const activateUserSchema = {
   summary: 'Activate user',
-  description: 'Activate a user',
+  description: [
+    'This route allows the user to activate a user.',
+    '',
+    '-   Only authenticated users have the privilege to activate a user.',
+    '',
+    '-   The user id must be a valid UUID and must be sent as a path parameter',
+    '',
+    '-   The user must exist in the database.',
+    '',
+    '-   The response includes the activated user.',
+  ].join('\n'),
   tags: ['Users'],
   security: [{ bearerAuth: [] }],
   params: {
@@ -11,34 +24,10 @@ export const activateUserSchema = {
   },
   response: {
     200: {
-      type: 'object',
-      properties: {
-        id: { type: 'string' },
-        username: { type: 'string' },
-        email: { type: 'string' },
-        isActive: { type: 'boolean' },
-        deactivationDate: { type: 'string' },
-        deactivationReason: { type: 'string' },
-        createdAt: { type: 'string' },
-        updatedAt: { type: 'string' },
-      },
+      description: 'Successful response',
+      ...userEntitiesSchemas.User,
     },
-    404: {
-      description: 'User not found',
-      type: 'object',
-      properties: {
-        hasError: { type: 'boolean', example: true },
-        message: { type: 'string', example: 'User not found' },
-        error: { type: 'string', example: 'User Not Found' },
-      },
-    },
-    500: {
-      type: 'object',
-      properties: {
-        statusCode: { type: 'number' },
-        error: { type: 'string' },
-        message: { type: 'string' },
-      },
-    },
+    404: sharedSchemas.Error_404,
+    500: sharedSchemas.Error_500,
   },
 };
