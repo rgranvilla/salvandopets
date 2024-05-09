@@ -1,5 +1,7 @@
 import { PermissionNotFoundError } from '@/core/errors/custom-errors/permissionNotFoundError';
+
 import { IPermissionsRepository } from '@/infra/repositories/permissions/IPermissionsRepository';
+
 import { Permission } from '../../entities/permissions';
 
 interface IUpdatePermissionUseCaseRequest {

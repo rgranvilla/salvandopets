@@ -1,9 +1,11 @@
-import { handleError } from '@/core/errors/handleError';
-import { hashPassword } from '@/core/utils/hashPassword';
-import { CreateUserUseCase } from '@/domain/users/use-cases/create-user/createUserUseCase';
-import { PrismaUsersRepository } from '@/infra/repositories/users/prisma/prismaUsersRepository';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
+
+import { handleError } from '@/core/errors/handleError';
+import { hashPassword } from '@/core/utils/hashPassword';
+
+import { CreateUserUseCase } from '@/domain/users/use-cases/create-user/createUserUseCase';
+import { PrismaUsersRepository } from '@/infra/repositories/users/prisma/prismaUsersRepository';
 
 export async function createUserController(
   request: FastifyRequest,

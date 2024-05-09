@@ -1,8 +1,10 @@
-import { handleError } from '@/core/errors/handleError';
-import { ListUsersUseCase } from '@/domain/users/use-cases/list-users/listUsersUseCase';
-import { PrismaUsersRepository } from '@/infra/repositories/users/prisma/prismaUsersRepository';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
+
+import { handleError } from '@/core/errors/handleError';
+
+import { ListUsersUseCase } from '@/domain/users/use-cases/list-users/listUsersUseCase';
+import { PrismaUsersRepository } from '@/infra/repositories/users/prisma/prismaUsersRepository';
 
 export const listUsersController = async (
   request: FastifyRequest,

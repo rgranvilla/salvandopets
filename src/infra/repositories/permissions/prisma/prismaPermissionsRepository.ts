@@ -1,6 +1,8 @@
 import { prisma } from '@/database/lib/prisma';
+
 import { Permission } from '@/domain/permissions/entities/permissions';
 import { PermissionMapper } from '@/infra/mappers/permissions/permissionMapper';
+
 import { IPermissionsRepository } from '../IPermissionsRepository';
 
 export class PrismaPermissionsRepository implements IPermissionsRepository {

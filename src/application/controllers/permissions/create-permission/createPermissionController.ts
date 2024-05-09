@@ -1,8 +1,10 @@
-import { handleError } from '@/core/errors/handleError';
-import { CreatePermissionUseCase } from '@/domain/permissions/use-cases/create-permission/createPermissionUseCase';
-import { PrismaPermissionsRepository } from '@/infra/repositories/permissions/prisma/prismaPermissionsRepository';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
+
+import { handleError } from '@/core/errors/handleError';
+
+import { CreatePermissionUseCase } from '@/domain/permissions/use-cases/create-permission/createPermissionUseCase';
+import { PrismaPermissionsRepository } from '@/infra/repositories/permissions/prisma/prismaPermissionsRepository';
 
 export async function createPermissionController(
   request: FastifyRequest,

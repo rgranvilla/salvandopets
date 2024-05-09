@@ -1,5 +1,6 @@
-import { env } from '@/config/env';
 import { hash } from 'bcrypt';
+
+import { env } from '@/config/env';
 
 export async function hashPassword(password: string) {
   const { SALT_ROUNDS } = env;

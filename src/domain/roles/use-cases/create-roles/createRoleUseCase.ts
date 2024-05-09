@@ -1,5 +1,7 @@
 import { RoleAlreadyInUseError } from '@/core/errors/custom-errors/roleAlreadyInUseError';
+
 import { IRolesRepository } from '@/infra/repositories/roles/IRolesRepository';
+
 import { Role } from '../../entities/role';
 
 interface ICreateRoleUseCaseRequest {

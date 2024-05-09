@@ -1,5 +1,7 @@
 import { PermissionAlreadyInUseError } from '@/core/errors/custom-errors/permissionAlreadyInUseError';
+
 import { IPermissionsRepository } from '@/infra/repositories/permissions/IPermissionsRepository';
+
 import { Permission } from '../../entities/permissions';
 
 interface ICreatePermissionUseCaseRequest {

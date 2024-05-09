@@ -1,8 +1,11 @@
-import { IPaginatedParams } from '@/core/@types/IPaginetedParams';
-import { InMemoryUsersRepository } from '@/infra/repositories/users/in-memory/inMemoryUsersRepository';
 import { createUserFactory } from '@/tests/factories/createUserFactory';
 import { describe } from 'node:test';
 import { beforeEach, expect, it } from 'vitest';
+
+import { IPaginatedParams } from '@/core/@types/IPaginetedParams';
+
+import { InMemoryUsersRepository } from '@/infra/repositories/users/in-memory/inMemoryUsersRepository';
+
 import { ListUsersUseCase } from './listUsersUseCase';
 
 let usersRepository: InMemoryUsersRepository;

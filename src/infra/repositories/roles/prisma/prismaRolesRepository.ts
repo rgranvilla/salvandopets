@@ -1,6 +1,8 @@
 import { prisma } from '@/database/lib/prisma';
+
 import { Role } from '@/domain/roles/entities/role';
 import { RoleMapper } from '@/infra/mappers/roles/roleMapper';
+
 import { IRolesRepository } from '../IRolesRepository';
 
 export class PrismaRolesRepository implements IRolesRepository {

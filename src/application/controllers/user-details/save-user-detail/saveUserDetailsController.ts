@@ -1,9 +1,11 @@
+import { FastifyReply, FastifyRequest } from 'fastify';
+import { z } from 'zod';
+
 import { handleError } from '@/core/errors/handleError';
+
 import { EnumGender } from '@/domain/usersDetails/entities/userDetail';
 import { SaveUserDetailUseCase } from '@/domain/usersDetails/use-cases/save-user-detail/saveUserDetailUseCase';
 import { PrismaUserDetailsRepository } from '@/infra/repositories/userDetails/prisma/prismaUserDetailsRepository';
-import { FastifyReply, FastifyRequest } from 'fastify';
-import { z } from 'zod';
 
 export async function saveUserDetailsController(
   request: FastifyRequest,

@@ -1,6 +1,8 @@
 import { prisma } from '@/database/lib/prisma';
+
 import { AuthToken } from '@/domain/authenticate/entities/authToken';
 import { AuthTokenMapper } from '@/infra/mappers/authenticate/authTokenMapper';
+
 import { IAuthTokensRepository } from '../IAuthTokensRepository';
 
 export class PrismaAuthTokensRepository implements IAuthTokensRepository {

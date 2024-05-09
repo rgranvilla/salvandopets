@@ -1,8 +1,10 @@
-import { handleError } from '@/core/errors/handleError';
-import { DeleteAddressUseCase } from '@/domain/address/use-cases/delete-address/deleteAddressUseCase';
-import { PrismaAddressesRepository } from '@/infra/repositories/address/prisma/prismaAddressRepository';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
+
+import { handleError } from '@/core/errors/handleError';
+
+import { DeleteAddressUseCase } from '@/domain/address/use-cases/delete-address/deleteAddressUseCase';
+import { PrismaAddressesRepository } from '@/infra/repositories/address/prisma/prismaAddressRepository';
 
 export async function deleteAddressController(
   request: FastifyRequest,

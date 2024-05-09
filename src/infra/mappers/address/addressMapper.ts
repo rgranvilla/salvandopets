@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
-import { Address } from '@/domain/address/entities/address';
 import { Address as AddressDB, AddressType } from '@prisma/client';
+
+import { Address } from '@/domain/address/entities/address';
 
 export class AddressMapper {
   static toDatabase(address: Address): AddressDB {

@@ -1,4 +1,5 @@
 import { IAddressesRepository } from '@/infra/repositories/address/IAddressesRepository';
+
 import { IAddressEntety } from '../../entities/address';
 
 export interface IListAddressResponse {

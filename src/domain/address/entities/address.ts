@@ -1,6 +1,7 @@
-import { Replace } from '@/core/helpers/replace';
 import { AddressType } from '@prisma/client';
 import { randomUUID } from 'crypto';
+
+import { Replace } from '@/core/helpers/replace';
 
 export interface IAddressFilters {
   city?: string;

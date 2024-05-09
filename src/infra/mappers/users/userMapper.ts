@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
-import { User } from '@/domain/users/entities/user';
 import { User as UserDB } from '@prisma/client';
+
+import { User } from '@/domain/users/entities/user';
 export class UserMapper {
   static toDatabase(user: User): UserDB {
     return {

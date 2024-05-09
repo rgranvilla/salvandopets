@@ -1,7 +1,10 @@
-import { UserNotFoundError } from '@/core/errors/custom-errors/userNotFoundError';
-import { InMemoryUsersRepository } from '@/infra/repositories/users/in-memory/inMemoryUsersRepository';
 import { createUserFactory } from '@/tests/factories/createUserFactory';
 import { beforeEach, describe, expect, it } from 'vitest';
+
+import { UserNotFoundError } from '@/core/errors/custom-errors/userNotFoundError';
+
+import { InMemoryUsersRepository } from '@/infra/repositories/users/in-memory/inMemoryUsersRepository';
+
 import { User } from '../../entities/user';
 import { ActivateUserUseCase } from './activateUserUseCase';
 

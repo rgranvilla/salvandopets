@@ -1,8 +1,10 @@
-import { handleError } from '@/core/errors/handleError';
-import { CreateAddressUseCase } from '@/domain/address/use-cases/create-address/createAddressUseCase';
-import { PrismaAddressesRepository } from '@/infra/repositories/address/prisma/prismaAddressRepository';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
+
+import { handleError } from '@/core/errors/handleError';
+
+import { CreateAddressUseCase } from '@/domain/address/use-cases/create-address/createAddressUseCase';
+import { PrismaAddressesRepository } from '@/infra/repositories/address/prisma/prismaAddressRepository';
 
 export async function createAddressController(
   request: FastifyRequest,

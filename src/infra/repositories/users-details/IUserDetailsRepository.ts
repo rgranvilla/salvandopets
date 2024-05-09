@@ -1,4 +1,4 @@
-import { UserDetail } from '@/domain/usersDetails/entities/userDetail';
+import { UserDetail } from '@/domain/users-details/entities/userDetail';
 
 export abstract class IUserDetailsRepository {
   abstract save(

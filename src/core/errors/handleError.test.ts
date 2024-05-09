@@ -1,9 +1,11 @@
-import { EmailAlreadyInUseError } from '@/core/errors/custom-errors/emailAlreadyInUseError';
-import { UserNotFoundError } from '@/core/errors/custom-errors/userNotFoundError';
-import { UsernameAlreadyInUseError } from '@/core/errors/custom-errors/usernameAlreadyInUseError';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ZodError } from 'zod';
+
+import { EmailAlreadyInUseError } from '@/core/errors/custom-errors/emailAlreadyInUseError';
+import { UsernameAlreadyInUseError } from '@/core/errors/custom-errors/usernameAlreadyInUseError';
+import { UserNotFoundError } from '@/core/errors/custom-errors/userNotFoundError';
+
 import { handleError } from './handleError';
 
 describe('handleError', () => {

@@ -1,9 +1,11 @@
+import { FastifyReply, FastifyRequest } from 'fastify';
+import { z } from 'zod';
+
 import { handleError } from '@/core/errors/handleError';
+
 import { UpdateUserUseCase } from '@/domain/users/use-cases/update-user/updateUserUseCase';
 import { UserMapper } from '@/infra/mappers/users/userMapper';
 import { PrismaUsersRepository } from '@/infra/repositories/users/prisma/prismaUsersRepository';
-import { FastifyReply, FastifyRequest } from 'fastify';
-import { z } from 'zod';
 
 export async function updateUserController(
   request: FastifyRequest,

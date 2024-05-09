@@ -1,8 +1,10 @@
-import { handleError } from '@/core/errors/handleError';
-import { CreateRolePermissionUseCase } from '@/domain/rolesPermissions/use-cases/create-role-permission/createRolePermissionUseCase';
-import { PrismaRolesPermissionsRepository } from '@/infra/repositories/rolesPermissions/prisma/prismaRolesPermissionsRepository';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
+
+import { handleError } from '@/core/errors/handleError';
+
+import { CreateRolePermissionUseCase } from '@/domain/rolesPermissions/use-cases/create-role-permission/createRolePermissionUseCase';
+import { PrismaRolesPermissionsRepository } from '@/infra/repositories/rolesPermissions/prisma/prismaRolesPermissionsRepository';
 
 export async function createRolePermissionController(
   request: FastifyRequest,

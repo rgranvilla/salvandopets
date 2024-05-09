@@ -1,10 +1,12 @@
+import { FastifyReply } from 'fastify';
+
 import { ExpiredTokenError } from '@/core/errors/custom-errors/expiredTokenError';
 import { UserNotFoundError } from '@/core/errors/custom-errors/userNotFoundError';
 import { CryptoHelper } from '@/core/utils/cryptoHelper';
 
 import { IAuthTokensRepository } from '@/infra/repositories/authenticate/IAuthTokensRepository';
 import { IUsersRepository } from '@/infra/repositories/users/IUsersRepository';
-import { FastifyReply } from 'fastify';
+
 import { AuthToken } from '../../entities/authToken';
 
 interface IRefreshTokenPayload {

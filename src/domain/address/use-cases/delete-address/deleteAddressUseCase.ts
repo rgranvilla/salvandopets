@@ -1,4 +1,5 @@
 import { AddressNotFoundError } from '@/core/errors/custom-errors/addressNotFoundError';
+
 import { IAddressesRepository } from '@/infra/repositories/address/IAddressesRepository';
 
 interface IDeleteAddressUseCaseRequest {

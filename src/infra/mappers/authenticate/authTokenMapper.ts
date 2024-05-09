@@ -1,5 +1,6 @@
-import { AuthToken } from '@/domain/authenticate/entities/authToken';
 import { UserToken as AuthTokenDB } from '@prisma/client';
+
+import { AuthToken } from '@/domain/authenticate/entities/authToken';
 
 export class AuthTokenMapper {
   static toDatabase(data: AuthToken): AuthTokenDB {

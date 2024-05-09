@@ -1,4 +1,5 @@
-import { IUserDetailsRepository } from '@/infra/repositories/userDetails/IUserDetailsRepository';
+import { IUserDetailsRepository } from '@/infra/repositories/users-details/IUserDetailsRepository';
+
 import { EnumGender, UserDetail } from '../../entities/userDetail';
 
 interface ISaveUserDetailUseCaseRequest {

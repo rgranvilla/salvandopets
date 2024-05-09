@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
-import { Permission } from '@/domain/permissions/entities/permissions';
 import { Permission as PermissionDB } from '@prisma/client';
+
+import { Permission } from '@/domain/permissions/entities/permissions';
 
 export class PermissionMapper {
   static toDatabase(permission: Permission): PermissionDB {

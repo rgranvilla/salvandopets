@@ -1,4 +1,5 @@
 import { IPermissionsRepository } from '@/infra/repositories/permissions/IPermissionsRepository';
+
 import { IPermissionEntety } from '../../entities/permissions';
 
 export interface IListPermissionsResponse {

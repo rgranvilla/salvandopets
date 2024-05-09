@@ -1,5 +1,6 @@
 import { IPaginatedParams } from '@/core/@types/IPaginetedParams';
 import { prisma } from '@/database/lib/prisma';
+
 import {
   User,
   UsersDateRangeFieldType,
@@ -8,6 +9,7 @@ import {
 } from '@/domain/users/entities/user';
 import { IListUsersResponse } from '@/domain/users/use-cases/list-users/listUsersUseCase';
 import { UserMapper } from '@/infra/mappers/users/userMapper';
+
 import { IUsersRepository } from '../IUsersRepository';
 
 export class PrismaUsersRepository implements IUsersRepository {

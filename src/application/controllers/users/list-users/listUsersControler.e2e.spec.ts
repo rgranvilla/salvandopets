@@ -1,12 +1,14 @@
+import request from 'supertest';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+
 import { IPaginatedParams } from '@/core/@types/IPaginetedParams';
 import { app } from '@/core/app';
+
 import {
   UsersDateRangeFieldType,
   UsersSearchFieldType,
   UsersSortByType,
 } from '@/domain/users/entities/user';
-import request from 'supertest';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 let token: string;
 

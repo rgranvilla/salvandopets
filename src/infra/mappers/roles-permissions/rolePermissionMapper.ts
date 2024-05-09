@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
-import { RolePermission } from '@/domain/rolesPermissions/entities/rolePermission';
 import { RolesPermission as RolesPermissionDB } from '@prisma/client';
+
+import { RolePermission } from '@/domain/rolesPermissions/entities/rolePermission';
 
 export class RolePermissionMapper {
   static toDatabase(role: RolePermission): RolesPermissionDB {

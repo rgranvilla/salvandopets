@@ -1,7 +1,9 @@
+import { FastifyReply, FastifyRequest } from 'fastify';
+
 import { handleError } from '@/core/errors/handleError';
+
 import { ListPermissionsUseCase } from '@/domain/permissions/use-cases/list-permissions/listPermissionsUseCase';
 import { PrismaPermissionsRepository } from '@/infra/repositories/permissions/prisma/prismaPermissionsRepository';
-import { FastifyReply, FastifyRequest } from 'fastify';
 
 export const listPermissionsController = async (
   request: FastifyRequest,

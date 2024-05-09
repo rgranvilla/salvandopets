@@ -1,6 +1,8 @@
 import { prisma } from '@/database/lib/prisma';
+
 import { Address, IAddressFilters } from '@/domain/address/entities/address';
 import { AddressMapper } from '@/infra/mappers/address/addressMapper';
+
 import { IAddressesRepository } from '../IAddressesRepository';
 
 export class PrismaAddressesRepository implements IAddressesRepository {

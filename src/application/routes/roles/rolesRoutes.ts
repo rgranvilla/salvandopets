@@ -1,11 +1,13 @@
+import { FastifyInstance } from 'fastify';
+
+import { verifyJWT } from '@/core/middlewares/verifyJWT';
+
 import { createRoleController } from '@/application/controllers/roles/create-role/createRoleController';
 import { CreateRoleSchema } from '@/application/controllers/roles/create-role/createRoleSchema';
 import { listRolesController } from '@/application/controllers/roles/list-roles/listRolesControler';
 import { listRolesSchema } from '@/application/controllers/roles/list-roles/listRolesSchema';
 import { updateRoleController } from '@/application/controllers/roles/update-role/updateRoleController';
 import { UpdateRoleSchema } from '@/application/controllers/roles/update-role/updateRoleSchema';
-import { verifyJWT } from '@/core/middlewares/verifyJWT';
-import { FastifyInstance } from 'fastify';
 
 export async function rolesRoutes(app: FastifyInstance) {
   app.route({

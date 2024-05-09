@@ -1,6 +1,8 @@
 import { prisma } from '@/database/lib/prisma';
+
 import { UserDetail } from '@/domain/usersDetails/entities/userDetail';
 import { UserDetailsMapper } from '@/infra/mappers/userDetails/userDetailsMapper';
+
 import { IUserDetailsRepository } from '../IUserDetailsRepository';
 
 export class PrismaUserDetailsRepository implements IUserDetailsRepository {

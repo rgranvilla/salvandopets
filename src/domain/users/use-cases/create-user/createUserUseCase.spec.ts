@@ -1,7 +1,10 @@
+import { beforeEach, describe, expect, it } from 'vitest';
+
 import { EmailAlreadyInUseError } from '@/core/errors/custom-errors/emailAlreadyInUseError';
 import { UsernameAlreadyInUseError } from '@/core/errors/custom-errors/usernameAlreadyInUseError';
+
 import { InMemoryUsersRepository } from '@/infra/repositories/users/in-memory/inMemoryUsersRepository';
-import { beforeEach, describe, expect, it } from 'vitest';
+
 import { CreateUserUseCase } from './createUserUseCase';
 
 let usersRepository: InMemoryUsersRepository;

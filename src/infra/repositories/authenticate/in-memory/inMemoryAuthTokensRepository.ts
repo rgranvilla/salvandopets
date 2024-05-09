@@ -1,5 +1,6 @@
 import { AuthToken } from '@/domain/authenticate/entities/authToken';
 import { AuthTokenMapper } from '@/infra/mappers/authenticate/authTokenMapper';
+
 import { IAuthTokensRepository } from '../IAuthTokensRepository';
 
 type InMemoryUserTokenDB = {

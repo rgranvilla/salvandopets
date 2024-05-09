@@ -1,5 +1,6 @@
-import { Replace } from '@/core/helpers/replace';
 import { randomUUID } from 'crypto';
+
+import { Replace } from '@/core/helpers/replace';
 
 export interface IPermissionEntety {
   id: string;

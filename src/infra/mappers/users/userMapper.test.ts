@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { User } from '../../../domain/users/entities/user';
 import { UserMapper } from './userMapper';
 

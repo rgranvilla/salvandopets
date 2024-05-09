@@ -1,10 +1,12 @@
-import { env } from '@/config/env';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { ZodError } from 'zod';
+
+import { env } from '@/config/env';
+
 import { EmailAlreadyInUseError } from './custom-errors/emailAlreadyInUseError';
 import { UnauthorizedError } from './custom-errors/unauthorizedError';
-import { UserNotFoundError } from './custom-errors/userNotFoundError';
 import { UsernameAlreadyInUseError } from './custom-errors/usernameAlreadyInUseError';
+import { UserNotFoundError } from './custom-errors/userNotFoundError';
 
 export function handleError(
   error: unknown,

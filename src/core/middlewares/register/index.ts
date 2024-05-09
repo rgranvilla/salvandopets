@@ -1,7 +1,11 @@
-import { auth } from '@/config/auth';
+import fastifyCookie from '@fastify/cookie';
 import fastifyCors from '@fastify/cors';
+import fastifyJwt from '@fastify/jwt';
 import fastifySwagger from '@fastify/swagger';
+import fastifySwaggerUi from '@fastify/swagger-ui';
 import { FastifyInstance } from 'fastify';
+
+import { auth } from '@/config/auth';
 
 import {
   addressEntitiesSchemas,
@@ -29,9 +33,7 @@ import {
   userRequestsSchemas,
 } from '@/application/controllers/users/userSchemas';
 import { appRoutes } from '@/application/routes';
-import fastifyCookie from '@fastify/cookie';
-import fastifyJwt from '@fastify/jwt';
-import fastifySwaggerUi from '@fastify/swagger-ui';
+
 import packageJson from '../../../../package.json';
 
 const { secretToken, expiresInToken } = auth;

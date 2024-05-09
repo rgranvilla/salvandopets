@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
-import { Role } from '@/domain/roles/entities/role';
 import { Role as RoleDB } from '@prisma/client';
+
+import { Role } from '@/domain/roles/entities/role';
 
 export class RoleMapper {
   static toDatabase(role: Role): RoleDB {

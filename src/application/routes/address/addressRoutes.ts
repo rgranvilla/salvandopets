@@ -1,3 +1,7 @@
+import { FastifyInstance } from 'fastify';
+
+import { verifyJWT } from '@/core/middlewares/verifyJWT';
+
 import { createAddressController } from '@/application/controllers/address/create-address/createAddressController';
 import { CreateAddressSchema } from '@/application/controllers/address/create-address/createAddressSchema';
 import { deleteAddressController } from '@/application/controllers/address/delete-address/deleteAddressController';
@@ -6,8 +10,6 @@ import { listAddressController } from '@/application/controllers/address/list-ad
 import { ListAddressSchema } from '@/application/controllers/address/list-addresses/listAddressesSchema';
 import { updateAddressController } from '@/application/controllers/address/update-address/updateAddressController';
 import { UpdateAddressSchema } from '@/application/controllers/address/update-address/updateAddressSchema';
-import { verifyJWT } from '@/core/middlewares/verifyJWT';
-import { FastifyInstance } from 'fastify';
 
 export async function addressRoutes(app: FastifyInstance) {
   app.route({

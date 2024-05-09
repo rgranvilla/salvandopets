@@ -1,6 +1,8 @@
-import { UserNotFoundError } from '@/core/errors/custom-errors/userNotFoundError';
 import { UsernameAlreadyInUseError } from '@/core/errors/custom-errors/usernameAlreadyInUseError';
+import { UserNotFoundError } from '@/core/errors/custom-errors/userNotFoundError';
+
 import { IUsersRepository } from '@/infra/repositories/users/IUsersRepository';
+
 import { User } from '../../entities/user';
 
 interface IUpdateUserUseCaseRequest {

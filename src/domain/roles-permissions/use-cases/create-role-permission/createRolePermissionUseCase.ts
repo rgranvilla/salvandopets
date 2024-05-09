@@ -1,5 +1,7 @@
 import { RolePermissionAlreadyExistError } from '@/core/errors/custom-errors/rolePermissionAlreadyExistError';
+
 import { IRolesPermissionsRepository } from '@/infra/repositories/rolesPermissions/IRolesPermissionsRepository';
+
 import { RolePermission } from '../../entities/rolePermission';
 
 interface ICreateRolePermissionUseCaseRequest {

@@ -1,4 +1,5 @@
 import { FastifyInstance } from 'fastify';
+
 import { addressRoutes } from './address/addressRoutes';
 import { authenticateRoutes } from './authenticate/authenticateRoutes';
 import { permissionsRoutes } from './permissions/permissionsRoutes';

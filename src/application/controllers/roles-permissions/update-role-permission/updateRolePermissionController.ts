@@ -1,9 +1,11 @@
+import { FastifyReply, FastifyRequest } from 'fastify';
+import { z } from 'zod';
+
 import { handleError } from '@/core/errors/handleError';
+
 import { UpdateRolePermissionUseCase } from '@/domain/rolesPermissions/use-cases/update-role-permission/updateRolePermissionUseCase';
 import { RolePermissionMapper } from '@/infra/mappers/rolesPermissions/rolePermissionMapper';
 import { PrismaRolesPermissionsRepository } from '@/infra/repositories/rolesPermissions/prisma/prismaRolesPermissionsRepository';
-import { FastifyReply, FastifyRequest } from 'fastify';
-import { z } from 'zod';
 
 export async function updateRolePermissionController(
   request: FastifyRequest,

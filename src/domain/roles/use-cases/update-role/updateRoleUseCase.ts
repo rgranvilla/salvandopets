@@ -1,5 +1,7 @@
 import { RoleNotFoundError } from '@/core/errors/custom-errors/roleNotFoundError';
+
 import { IRolesRepository } from '@/infra/repositories/roles/IRolesRepository';
+
 import { Role } from '../../entities/role';
 
 interface IUpdateRoleUseCaseRequest {

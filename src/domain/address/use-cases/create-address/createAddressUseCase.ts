@@ -1,4 +1,5 @@
 import { IAddressesRepository } from '@/infra/repositories/address/IAddressesRepository';
+
 import { Address, IAddressEntety } from '../../entities/address';
 
 interface ICreateAddressUseCaseRequest

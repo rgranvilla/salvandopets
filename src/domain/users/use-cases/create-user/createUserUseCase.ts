@@ -1,6 +1,8 @@
 import { EmailAlreadyInUseError } from '@/core/errors/custom-errors/emailAlreadyInUseError';
 import { UsernameAlreadyInUseError } from '@/core/errors/custom-errors/usernameAlreadyInUseError';
+
 import { IUsersRepository } from '@/infra/repositories/users/IUsersRepository';
+
 import { User } from '../../entities/user';
 
 interface ICreateUserUseCaseRequest {

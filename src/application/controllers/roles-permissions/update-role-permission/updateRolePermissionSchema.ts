@@ -1,4 +1,5 @@
 import { FastifySchema } from 'fastify';
+
 import { sharedSchemas } from '../../sharedSchemas';
 import {
   rolesPermissionsEntitiesSchemas,

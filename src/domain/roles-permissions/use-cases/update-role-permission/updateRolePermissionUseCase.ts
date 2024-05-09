@@ -1,5 +1,7 @@
 import { RolePermissionNotFoundError } from '@/core/errors/custom-errors/rolePermissionNotFoundError';
+
 import { IRolesPermissionsRepository } from '@/infra/repositories/rolesPermissions/IRolesPermissionsRepository';
+
 import { RolePermission } from '../../entities/rolePermission';
 
 interface IUpdateRolePermissionUseCaseRequest {

@@ -2,8 +2,10 @@ import { PermissionNotFoundError } from '@/core/errors/custom-errors/permissionN
 import { RoleNotFoundError } from '@/core/errors/custom-errors/roleNotFoundError';
 import { RolePermissionNotFoundError } from '@/core/errors/custom-errors/rolePermissionNotFoundError';
 import { prisma } from '@/database/lib/prisma';
+
 import { RolePermission } from '@/domain/rolesPermissions/entities/rolePermission';
 import { RolePermissionMapper } from '@/infra/mappers/rolesPermissions/rolePermissionMapper';
+
 import { IRolesPermissionsRepository } from '../IRolesPermissionsRepository';
 
 export class PrismaRolesPermissionsRepository

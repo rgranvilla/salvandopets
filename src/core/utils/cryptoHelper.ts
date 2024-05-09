@@ -1,5 +1,6 @@
-import { env } from '@/config/env';
 import CryptoJS from 'crypto-js';
+
+import { env } from '@/config/env';
 
 export abstract class ICryptoHelper {
   abstract encryptData(data: unknown): Promise<string>;

@@ -1,9 +1,11 @@
+import { FastifyReply, FastifyRequest } from 'fastify';
+import { z } from 'zod';
+
 import { handleError } from '@/core/errors/handleError';
+
 import { AuthenticateUserUseCase } from '@/domain/authenticate/use-cases/authenticate/authenticateUseCase';
 import { PrismaAuthTokensRepository } from '@/infra/repositories/authenticate/prisma/prismaAuthTokensRepository';
 import { PrismaUsersRepository } from '@/infra/repositories/users/prisma/prismaUsersRepository';
-import { FastifyReply, FastifyRequest } from 'fastify';
-import { z } from 'zod';
 
 export async function authenticateUserController(
   request: FastifyRequest,

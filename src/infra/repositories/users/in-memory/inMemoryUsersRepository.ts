@@ -1,4 +1,5 @@
 import { IPaginatedParams } from '@/core/@types/IPaginetedParams';
+
 import {
   User,
   UsersDateRangeFieldType,
@@ -7,6 +8,7 @@ import {
 } from '@/domain/users/entities/user';
 import { IListUsersResponse } from '@/domain/users/use-cases/list-users/listUsersUseCase';
 import { UserMapper } from '@/infra/mappers/users/userMapper';
+
 import { IUsersRepository } from '../IUsersRepository';
 
 type InMemoryUserDB = {

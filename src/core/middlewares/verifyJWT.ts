@@ -1,4 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
+
 import { UnauthorizedError } from '../errors/custom-errors/unauthorizedError';
 
 export async function verifyJWT(request: FastifyRequest, reply: FastifyReply) {

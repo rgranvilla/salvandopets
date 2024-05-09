@@ -1,8 +1,9 @@
+import { PersonalDetail as PrismaPersonalDetail } from '@prisma/client';
+
 import {
   EnumGender,
   UserDetail,
-} from '@/domain/usersDetails/entities/userDetail';
-import { PersonalDetail as PrismaPersonalDetail } from '@prisma/client';
+} from '@/domain/users-details/entities/userDetail';
 
 export class UserDetailsMapper {
   static toDatabase(data: UserDetail): PrismaPersonalDetail {

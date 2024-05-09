@@ -1,8 +1,9 @@
+import { FastifyReply, FastifyRequest } from 'fastify';
+import { z } from 'zod';
+
 import { RefreshTokenUseCase } from '@/domain/authenticate/use-cases/refresh-token/refreshTokenUseCase';
 import { PrismaAuthTokensRepository } from '@/infra/repositories/authenticate/prisma/prismaAuthTokensRepository';
 import { PrismaUsersRepository } from '@/infra/repositories/users/prisma/prismaUsersRepository';
-import { FastifyReply, FastifyRequest } from 'fastify';
-import { z } from 'zod';
 
 export async function refreshTokenController(
   request: FastifyRequest,

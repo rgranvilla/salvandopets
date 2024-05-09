@@ -1,9 +1,11 @@
+import { FastifyReply, FastifyRequest } from 'fastify';
+import { z } from 'zod';
+
 import { handleError } from '@/core/errors/handleError';
+
 import { UpdateAddressUseCase } from '@/domain/address/use-cases/update-address/updateAddressUseCase';
 import { AddressMapper } from '@/infra/mappers/address/addressMapper';
 import { PrismaAddressesRepository } from '@/infra/repositories/address/prisma/prismaAddressRepository';
-import { FastifyReply, FastifyRequest } from 'fastify';
-import { z } from 'zod';
 
 export async function updateAddressController(
   request: FastifyRequest,

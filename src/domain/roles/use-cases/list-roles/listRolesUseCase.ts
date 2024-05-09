@@ -1,4 +1,5 @@
 import { IRolesRepository } from '@/infra/repositories/roles/IRolesRepository';
+
 import { IRoleEntety } from '../../entities/role';
 
 export interface IListRolesResponse {

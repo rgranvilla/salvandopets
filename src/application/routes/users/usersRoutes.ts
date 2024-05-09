@@ -1,3 +1,7 @@
+import { FastifyInstance } from 'fastify';
+
+import { verifyJWT } from '@/core/middlewares/verifyJWT';
+
 import { activateUserController } from '@/application/controllers/users/activate-user/activateUserController';
 import { activateUserSchema } from '@/application/controllers/users/activate-user/activateUserSchema';
 import { createUserController } from '@/application/controllers/users/create-user/createUserController';
@@ -8,8 +12,6 @@ import { listUsersController } from '@/application/controllers/users/list-users/
 import { listUsersSchema } from '@/application/controllers/users/list-users/listUsersSchema';
 import { updateUserController } from '@/application/controllers/users/update-user/updateUserController';
 import { UpdateUserSchema } from '@/application/controllers/users/update-user/updateUserSchema';
-import { verifyJWT } from '@/core/middlewares/verifyJWT';
-import { FastifyInstance } from 'fastify';
 
 export async function usersRoutes(app: FastifyInstance) {
   app.route({

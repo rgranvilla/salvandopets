@@ -1,13 +1,14 @@
 import { NotFoundError } from '@/core/errors/custom-errors/notFoundError';
+
 import {
   EnumGender,
   UserDetail,
-} from '@/domain/usersDetails/entities/userDetail';
+} from '@/domain/users-details/entities/userDetail';
+import { UserDetailsMapper } from '@/infra/mappers/users-details/userDetailsMapper';
 
-import { UserDetailsMapper } from '@/infra/mappers/userDetails/userDetailsMapper';
 import { IUserDetailsRepository } from '../IUserDetailsRepository';
 
-interface InMemoryUserDetailsDB {
+interface IInMemoryUserDetailsDB {
   id: string;
   user_id: string;
   first_name: string | null;
@@ -22,7 +23,7 @@ interface InMemoryUserDetailsDB {
 
 // eslint-disable-next-line prettier/prettier
 export class InMemoryUserDetailsRepository implements IUserDetailsRepository {
-  private items: InMemoryUserDetailsDB[] = [];
+  private items: IInMemoryUserDetailsDB[] = [];
 
   save(userDetails: UserDetail, alreadyExist: boolean): Promise<UserDetail> {
     if (alreadyExist) {

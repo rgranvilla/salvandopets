@@ -1,4 +1,5 @@
 import fastify from 'fastify';
+
 import { handleError } from './errors/handleError';
 import { registerMiddlewares } from './middlewares/register';
 

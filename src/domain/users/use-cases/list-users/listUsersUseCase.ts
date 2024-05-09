@@ -1,6 +1,8 @@
 import { IPaginatedParams } from '@/core/@types/IPaginetedParams';
 import { IPaginetedResponse } from '@/core/@types/IPaginetedResponse';
+
 import { IUsersRepository } from '@/infra/repositories/users/IUsersRepository';
+
 import {
   IUserEntety,
   UsersDateRangeFieldType,

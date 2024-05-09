@@ -1,7 +1,9 @@
+import { FastifyReply, FastifyRequest } from 'fastify';
+
 import { handleError } from '@/core/errors/handleError';
+
 import { ListAddressUseCase } from '@/domain/address/use-cases/list-address/listAddressUseCase';
 import { PrismaAddressesRepository } from '@/infra/repositories/address/prisma/prismaAddressRepository';
-import { FastifyReply, FastifyRequest } from 'fastify';
 
 export const listAddressController = async (
   request: FastifyRequest,

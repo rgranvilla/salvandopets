@@ -1,8 +1,8 @@
-import { app } from '@/core/app';
-
-import { JwtDecoder } from '@/core/utils/jwtDecode';
 import request from 'supertest';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+
+import { app } from '@/core/app';
+import { JwtDecoder } from '@/core/utils/jwtDecode';
 
 let refreshToken: string;
 

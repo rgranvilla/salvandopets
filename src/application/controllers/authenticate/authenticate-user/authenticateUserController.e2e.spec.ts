@@ -1,7 +1,7 @@
-import { app } from '@/core/app';
-
 import request from 'supertest';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+
+import { app } from '@/core/app';
 
 describe('Refresh Token Controller', () => {
   beforeAll(async () => {

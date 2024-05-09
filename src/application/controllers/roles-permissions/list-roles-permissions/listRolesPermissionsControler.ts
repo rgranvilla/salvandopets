@@ -1,7 +1,9 @@
+import { FastifyReply, FastifyRequest } from 'fastify';
+
 import { handleError } from '@/core/errors/handleError';
+
 import { ListRolesPermissionsUseCase } from '@/domain/rolesPermissions/use-cases/list-roles-permissions/listRolesPermissionsUseCase';
 import { PrismaRolesPermissionsRepository } from '@/infra/repositories/rolesPermissions/prisma/prismaRolesPermissionsRepository';
-import { FastifyReply, FastifyRequest } from 'fastify';
 
 export const listRolesPermissionsController = async (
   request: FastifyRequest,
