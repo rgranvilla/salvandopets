@@ -3,9 +3,9 @@ import { z } from 'zod';
 
 import { handleError } from '@/core/errors/handleError';
 
-import { UpdateRolePermissionUseCase } from '@/domain/rolesPermissions/use-cases/update-role-permission/updateRolePermissionUseCase';
-import { RolePermissionMapper } from '@/infra/mappers/rolesPermissions/rolePermissionMapper';
-import { PrismaRolesPermissionsRepository } from '@/infra/repositories/rolesPermissions/prisma/prismaRolesPermissionsRepository';
+import { UpdateRolePermissionUseCase } from '@/domain/roles-permissions/use-cases/update-role-permission/updateRolePermissionUseCase';
+import { RolePermissionMapper } from '@/infra/mappers/roles-permissions/rolePermissionMapper';
+import { PrismaRolesPermissionsRepository } from '@/infra/repositories/roles-permissions/prisma/prismaRolesPermissionsRepository';
 
 export async function updateRolePermissionController(
   request: FastifyRequest,

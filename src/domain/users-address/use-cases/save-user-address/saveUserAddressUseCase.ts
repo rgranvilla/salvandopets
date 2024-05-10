@@ -1,11 +1,13 @@
 import { IUserAddressesRepository } from '@/infra/repositories/users-address/IUserAddressesRepository';
 
 import { UserAddress } from '../../entities/userAddress';
+
 interface ISaveUserAddressUseCaseRequest {
   userId: string;
   addressId: string;
 }
-export class SaveUserDetailUseCase {
+
+export class SaveUserAddressesUseCase {
   private userAddressesRepository: IUserAddressesRepository;
 
   constructor(userAddressesRepository: IUserAddressesRepository) {

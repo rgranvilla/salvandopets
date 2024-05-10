@@ -3,9 +3,9 @@ import { z } from 'zod';
 
 import { handleError } from '@/core/errors/handleError';
 
-import { EnumGender } from '@/domain/usersDetails/entities/userDetail';
-import { SaveUserDetailUseCase } from '@/domain/usersDetails/use-cases/save-user-detail/saveUserDetailUseCase';
-import { PrismaUserDetailsRepository } from '@/infra/repositories/userDetails/prisma/prismaUserDetailsRepository';
+import { EnumGender } from '@/domain/users-details/entities/userDetail';
+import { SaveUserDetailUseCase } from '@/domain/users-details/use-cases/save-user-detail/saveUserDetailUseCase';
+import { PrismaUserDetailsRepository } from '@/infra/repositories/users-details/prisma/prismaUserDetailsRepository';
 
 export async function saveUserDetailsController(
   request: FastifyRequest,

@@ -3,8 +3,8 @@ import { RoleNotFoundError } from '@/core/errors/custom-errors/roleNotFoundError
 import { RolePermissionNotFoundError } from '@/core/errors/custom-errors/rolePermissionNotFoundError';
 import { prisma } from '@/database/lib/prisma';
 
-import { RolePermission } from '@/domain/rolesPermissions/entities/rolePermission';
-import { RolePermissionMapper } from '@/infra/mappers/rolesPermissions/rolePermissionMapper';
+import { RolePermission } from '@/domain/roles-permissions/entities/rolePermission';
+import { RolePermissionMapper } from '@/infra/mappers/roles-permissions/rolePermissionMapper';
 
 import { IRolesPermissionsRepository } from '../IRolesPermissionsRepository';
 

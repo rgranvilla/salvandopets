@@ -24,10 +24,12 @@ import {
   rolesRequestsSchemas,
 } from '@/application/controllers/roles/rolesSchemas';
 import { sharedSchemas } from '@/application/controllers/sharedSchemas';
+import { userAddressEntitiesSchemas } from '@/application/controllers/users-address/userAddressSchemas';
 import {
   userDetailsEntitiesSchemas,
   userDetailsRequestsSchemas,
-} from '@/application/controllers/user-details/userDetailSchemas';
+} from '@/application/controllers/users-details/userDetailSchemas';
+import { userRolesEntitiesSchemas } from '@/application/controllers/users-roles/userRolesSchemas';
 import {
   userEntitiesSchemas,
   userRequestsSchemas,
@@ -86,6 +88,8 @@ export function registerMiddlewares(app: FastifyInstance) {
         schemas: {
           ...userEntitiesSchemas,
           ...userDetailsEntitiesSchemas,
+          ...userAddressEntitiesSchemas,
+          ...userRolesEntitiesSchemas,
           ...addressEntitiesSchemas,
           ...rolesEntitiesSchemas,
           ...permissionsEntitiesSchemas,

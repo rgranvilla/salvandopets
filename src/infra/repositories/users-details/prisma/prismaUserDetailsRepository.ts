@@ -1,7 +1,7 @@
 import { prisma } from '@/database/lib/prisma';
 
-import { UserDetail } from '@/domain/usersDetails/entities/userDetail';
-import { UserDetailsMapper } from '@/infra/mappers/userDetails/userDetailsMapper';
+import { UserDetail } from '@/domain/users-details/entities/userDetail';
+import { UserDetailsMapper } from '@/infra/mappers/users-details/userDetailsMapper';
 
 import { IUserDetailsRepository } from '../IUserDetailsRepository';
 
